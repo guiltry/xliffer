@@ -16,6 +16,14 @@ module XLIFFer
         @source_language = @xml.attr('source-language')
         @target_language = @xml.attr('target-language')
         @strings = @xml.xpath('.//trans-unit').map { |tu| String.new(tu) }
+
+        @tool = @xml.xpath('.//tool')
+        if not @tool.empty?
+          @tool_id = @tool.attr('tool-id').value
+          @tool_name = @tool.attr('tool-name').value
+          @tool_version = @tool.attr('tool-version').value
+          @build_num = @tool.attr('build-num').value
+        end
       end
 
       def [](id)
@@ -34,6 +42,19 @@ module XLIFFer
       def target_language=(val)
         @target_language = val
         @xml['target-language'] = val
+      end
+
+      def tool_id
+        @tool_id
+      end
+      def tool_name
+        @tool_name
+      end
+      def tool_version
+        @tool_version
+      end
+      def build_num
+        @build_num
       end
 
       private

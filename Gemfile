@@ -4,8 +4,9 @@ gem 'nokogiri', '~> 1.5.10'
 gem 'equivalent-xml'
 
 group :test do
+  gem 'byebug'
   unless RUBY_VERSION.match(/\A1\.8/)
-    gem 'codeclimate-test-reporter', :require => false
+    # gem 'codeclimate-test-reporter', :require => false
   end
 end
 

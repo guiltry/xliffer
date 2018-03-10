@@ -1,12 +1,13 @@
 unless RUBY_VERSION.match(/\A1\.8/)
-  require 'codeclimate-test-reporter'
+  # require 'codeclimate-test-reporter'
   require 'simplecov'
-  CodeClimate::TestReporter.start
+  # CodeClimate::TestReporter.start
   SimpleCov.start
 end
 
 require 'equivalent-xml'
 require 'equivalent-xml/rspec_matchers'
+require 'byebug'
 
 require 'xliffer'
 
