@@ -15,6 +15,7 @@ module XLIFFer
         @original = @xml.attr('original')
         @source_language = @xml.attr('source-language')
         @target_language = @xml.attr('target-language')
+        @datatype = @xml.attr('datatype')
         @strings = @xml.xpath('.//trans-unit').map { |tu| String.new(tu) }
 
         @tool = @xml.xpath('.//tool')
@@ -47,14 +48,21 @@ module XLIFFer
       def tool_id
         @tool_id
       end
+
       def tool_name
         @tool_name
       end
+
       def tool_version
         @tool_version
       end
+
       def build_num
         @build_num
+      end
+
+      def datatype
+        @datatype
       end
 
       private

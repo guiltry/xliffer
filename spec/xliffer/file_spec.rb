@@ -65,6 +65,21 @@ module XLIFFer
       end
     end
 
+    describe '#datatype' do
+      it 'is nil if not defined' do
+        xml = Nokogiri::XML.parse('<xliff><file></file></xliff>')
+        file_node = xml.xpath('//file').first
+        expect(XLIFF::File.new(file_node).datatype).to be nil
+      end
+
+      it 'is the original attribute on file tag' do
+        xml_text = '<xliff><file datatype="plaintext"></file></xliff>'
+        xml = Nokogiri::XML.parse(xml_text)
+        file_node = xml.xpath('//file').first
+        expect(XLIFF::File.new(file_node).datatype).to eql('plaintext')
+      end
+    end
+
     describe '#tool_id' do
       it 'is nil if not defined' do
         xml = Nokogiri::XML.parse('<xliff><file></file></xliff>')
